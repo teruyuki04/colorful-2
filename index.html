@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>子どものアトリエ カラフル｜色彩心理カウンセリング</title>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&family=Kaisei+Opti:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red:    #F2645A;
+    --orange: #F5A623;
+    --yellow: #F7DC6F;
+    --green:  #82C16E;
+    --blue:   #5AACE0;
+    --purple: #B88FD4;
+    --pink:   #F4A7B9;
+    --cream:  #FEF9F0;
+    --dark:   #3A2E2E;
+    --mid:    #7A6A6A;
+    --light:  #FFF5EC;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Zen Maru Gothic', sans-serif; background: var(--cream); color: var(--dark); overflow-x: hidden; }
+
+  .rainbow-bar { height: 6px; background: linear-gradient(90deg, var(--red) 0%, var(--orange) 17%, var(--yellow) 33%, var(--green) 50%, var(--blue) 67%, var(--purple) 83%, var(--pink) 100%); }
+
+  .hero { background: var(--light); padding: 60px 20px 80px; text-align: center; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: -60px; left: -60px; width: 220px; height: 220px; background: radial-gradient(circle, #F7DC6F44 0%, transparent 70%); border-radius: 50%; }
+  .hero::after  { content: ''; position: absolute; bottom: -40px; right: -40px; width: 180px; height: 180px; background: radial-gradient(circle, #F4A7B944 0%, transparent 70%); border-radius: 50%; }
+
+  .hero-badge { display: inline-block; background: linear-gradient(135deg, var(--orange), var(--pink)); color: white; font-size: 13px; font-weight: 700; padding: 6px 18px; border-radius: 20px; margin-bottom: 28px; letter-spacing: 0.08em; animation: fadeDown 0.6s ease both; }
+  .hero h1 { font-family: 'Kaisei Opti', serif; font-size: clamp(28px, 6vw, 46px); line-height: 1.5; color: var(--dark); margin-bottom: 20px; animation: fadeDown 0.7s ease 0.1s both; }
+  .hero h1 span { background: linear-gradient(135deg, var(--red), var(--orange), var(--yellow)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hero-sub { font-size: clamp(15px, 3vw, 18px); color: var(--mid); line-height: 1.9; max-width: 540px; margin: 0 auto 36px; animation: fadeDown 0.7s ease 0.2s both; }
+  .cta-btn { display: inline-block; background: linear-gradient(135deg, var(--orange), var(--red)); color: white; font-size: 16px; font-weight: 700; padding: 16px 40px; border-radius: 50px; text-decoration: none; box-shadow: 0 6px 24px rgba(242,100,90,0.35); transition: transform 0.2s, box-shadow 0.2s; animation: fadeDown 0.7s ease 0.3s both; letter-spacing: 0.04em; }
+  .cta-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(242,100,90,0.45); }
+  .hero-note { margin-top: 14px; font-size: 12px; color: var(--mid); animation: fadeDown 0.7s ease 0.4s both; }
+
+  section { padding: 64px 20px; }
+  .container { max-width: 680px; margin: 0 auto; }
+  .section-label { font-size: 12px; font-weight: 700; letter-spacing: 0.15em; color: var(--orange); text-align: center; margin-bottom: 10px; }
+  .section-title { font-family: 'Kaisei Opti', serif; font-size: clamp(22px, 4vw, 30px); text-align: center; line-height: 1.5; margin-bottom: 36px; color: var(--dark); }
+
+  .empathy { background: white; }
+  .empathy-cards { display: flex; flex-direction: column; gap: 14px; margin-bottom: 32px; }
+  .empathy-card { background: var(--light); border-left: 4px solid var(--orange); border-radius: 0 12px 12px 0; padding: 16px 20px; font-size: 15px; line-height: 1.7; color: var(--dark); }
+  .empathy-treasure { background: linear-gradient(135deg, #FFF8E8, #FFF0F5); border-radius: 20px; padding: 28px 24px; text-align: center; border: 2px solid #F5D89A; }
+  .treasure-lead { font-size: 15px; color: var(--mid); margin-bottom: 10px; line-height: 1.8; }
+  .treasure-main { font-family: 'Kaisei Opti', serif; font-size: 26px; color: var(--orange); font-weight: 700; margin-bottom: 14px; letter-spacing: 0.04em; }
+  .treasure-sub { font-size: 16px; color: var(--dark); line-height: 1.9; font-weight: 500; }
+
+  .what { background: var(--cream); }
+  .what-box { background: white; border-radius: 20px; padding: 36px 28px; box-shadow: 0 4px 24px rgba(58,46,46,0.07); text-align: center; margin-bottom: 20px; }
+  .what-box:last-child { margin-bottom: 0; }
+  .paint-icon { font-size: 40px; margin-bottom: 16px; display: block; }
+  .what-box p { font-size: 15px; line-height: 2; color: var(--mid); }
+  .what-box p strong { color: var(--dark); font-size: 16px; }
+
+  .steps { background: white; }
+  .steps-list { display: flex; flex-direction: column; gap: 24px; }
+  .step { display: flex; gap: 20px; align-items: flex-start; }
+  .step-num { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Kaisei Opti', serif; font-size: 20px; font-weight: 700; color: white; flex-shrink: 0; }
+  .step:nth-child(1) .step-num { background: var(--green); }
+  .step:nth-child(2) .step-num { background: #F2645A; }
+  .step:nth-child(3) .step-num { background: var(--purple); }
+  .step-body h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; color: var(--dark); }
+  .step-body p { font-size: 14px; color: var(--mid); line-height: 1.7; }
+  .step-connector { width: 2px; height: 20px; background: #E8DDD5; margin: 0 0 0 23px; }
+
+  .point { background: var(--light); }
+  .point-note { background: white; border-radius: 16px; padding: 24px; border: 2px dashed #E8C9A0; font-size: 14px; line-height: 1.9; color: var(--mid); }
+  .point-note strong { color: var(--orange); }
+
+  .profile { background: white; }
+  .profile-card { background: var(--cream); border-radius: 20px; padding: 32px 28px; display: flex; flex-direction: column; gap: 20px; }
+  .profile-icon { width: 80px; height: 80px; background: linear-gradient(135deg, var(--yellow), var(--orange)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 36px; margin: 0 auto; }
+  .profile-name { text-align: center; font-family: 'Kaisei Opti', serif; font-size: 22px; color: var(--dark); margin-bottom: 4px; }
+  .profile-title { text-align: center; font-size: 13px; color: var(--mid); line-height: 1.8; }
+  .profile-tags { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+  .profile-tag { background: white; border: 1px solid #E8DDD5; border-radius: 20px; padding: 5px 14px; font-size: 12px; color: var(--mid); }
+  .profile-text { font-size: 14px; line-height: 1.9; color: var(--mid); text-align: center; }
+
+  .monitor { background: linear-gradient(135deg, #FFF0E8, #FFF8F0); text-align: center; }
+  .monitor-badge { display: inline-block; background: linear-gradient(135deg, var(--red), var(--orange)); color: white; font-size: 13px; font-weight: 700; padding: 6px 20px; border-radius: 20px; margin-bottom: 20px; letter-spacing: 0.06em; }
+  .monitor-price { font-family: 'Kaisei Opti', serif; font-size: 42px; color: var(--red); margin: 8px 0; }
+  .monitor-price span { font-size: 18px; color: var(--mid); }
+  .monitor-note { font-size: 13px; color: var(--mid); margin-bottom: 32px; line-height: 1.7; }
+
+  .faq { background: white; }
+  .faq-list { display: flex; flex-direction: column; gap: 16px; }
+  .faq-item { border: 1px solid #EDE5DC; border-radius: 14px; overflow: hidden; }
+  .faq-q { background: var(--light); padding: 16px 20px; font-size: 14px; font-weight: 700; color: var(--dark); display: flex; gap: 10px; align-items: flex-start; }
+  .faq-q::before { content: 'Q'; color: var(--orange); font-family: 'Kaisei Opti', serif; font-size: 18px; flex-shrink: 0; line-height: 1.2; }
+  .faq-a { padding: 14px 20px; font-size: 14px; color: var(--mid); line-height: 1.8; display: flex; gap: 10px; align-items: flex-start; }
+  .faq-a::before { content: 'A'; color: var(--green); font-family: 'Kaisei Opti', serif; font-size: 18px; flex-shrink: 0; line-height: 1.2; }
+
+  .final-cta { background: linear-gradient(135deg, var(--orange) 0%, var(--red) 100%); text-align: center; padding: 72px 20px; color: white; }
+  .final-cta h2 { font-family: 'Kaisei Opti', serif; font-size: clamp(22px, 4vw, 30px); line-height: 1.6; margin-bottom: 12px; }
+  .final-cta p { font-size: 14px; opacity: 0.85; margin-bottom: 32px; line-height: 1.8; }
+  .cta-btn-white { display: inline-block; background: white; color: var(--red); font-size: 16px; font-weight: 700; padding: 16px 40px; border-radius: 50px; text-decoration: none; box-shadow: 0 6px 24px rgba(0,0,0,0.15); transition: transform 0.2s; letter-spacing: 0.04em; }
+  .cta-btn-white:hover { transform: translateY(-3px); }
+
+  footer { background: var(--dark); color: #BBA9A9; text-align: center; padding: 28px 20px; font-size: 12px; line-height: 1.8; }
+  footer a { color: #BBA9A9; }
+
+  .step-3-highlight {
+    background: linear-gradient(135deg, #FFF3E0, #FFF8EE);
+    border-radius: 16px;
+    padding: 16px;
+    border: 1.5px solid #F5D08A;
+  }
+  .step3-detail {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+  }
+  .step3-tag {
+    background: #F5A623;
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.04em;
+  }
+  .profile-private-note {
+    font-size: 12px;
+    color: var(--mid);
+    text-align: center;
+    background: var(--light);
+    border-radius: 10px;
+    padding: 10px 16px;
+    border: 1px solid #EDE5DC;
+    line-height: 1.8;
+  }
+  @keyframes fadeDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
+  .fade-up { opacity: 1; transform: none; }
+  .fade-up.visible { opacity: 1; transform: none; }
+
+  .sticky-cta { position: fixed; bottom: 0; left: 0; right: 0; background: white; padding: 12px 20px; box-shadow: 0 -4px 20px rgba(58,46,46,0.1); z-index: 100; display: flex; justify-content: center; }
+  .sticky-cta a { display: block; width: 100%; max-width: 400px; background: linear-gradient(135deg, var(--orange), var(--red)); color: white; text-align: center; font-size: 15px; font-weight: 700; padding: 14px; border-radius: 50px; text-decoration: none; box-shadow: 0 4px 16px rgba(242,100,90,0.35); }
+</style>
+</head>
+<body>
+
+<div class="rainbow-bar"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge">🎨 オンライン 色彩心理カウンセリング</div>
+    <h1>お絵描きが伝える<br><span>子どもの心のおしゃべり</span></h1>
+    <p class="hero-sub">
+      〜『表現遊び』を通して<br>
+      子どものおしゃべりに触れてみませんか？〜
+    </p>
+    <a href="#form" class="cta-btn">🌈 無料モニターに申し込む</a>
+    <p class="hero-note">※ 現在、初回モニターを無料でお受けしています</p>
+  </div>
+</section>
+
+<!-- EMPATHY -->
+<section class="empathy">
+  <div class="container">
+    <p class="section-label">VOICE OF MAMA &amp; CHILD</p>
+    <h2 class="section-title">子どもの愚痴、ママの愚痴。<br>それ、宝ものかもしれません。</h2>
+    <div class="empathy-cards">
+      <div class="empathy-card">💬 <strong>子どもの愚痴：</strong>「やだ！」「いや！」「なんで？」…止まらないぐずぐず</div>
+      <div class="empathy-card">💬 <strong>ママの愚痴：</strong>「また同じことして…」「どうしてわかってくれないの」</div>
+      <div class="empathy-card">😟 <strong>子育ての不安：</strong>「うちの子、ちゃんと育っているかな」「声かけ、これで合ってる？」</div>
+    </div>
+    <div class="empathy-treasure">
+      <p class="treasure-lead">そんなネガティブなこと、実はとっても大切で</p>
+      <p class="treasure-main">✨ 宝ものなのです ✨</p>
+      <p class="treasure-sub">
+        そこに何が隠れているのかな？<br>
+        一緒に考えていきませんか？
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT -->
+<section class="what">
+  <div class="container">
+    <p class="section-label">WHAT IS 表現遊び</p>
+    <h2 class="section-title">子どものアトリエ カラフルとは</h2>
+    <div class="what-box">
+      <span class="paint-icon">✂️🖍️</span>
+      <p>
+        幼い子どもがハサミでチョキチョキ、シールをペタペタ、<br>
+        クレヨンやマーカーでグルグル。<br><br>
+        その時にやりたいことを<strong>自由にやってみる</strong>。<br>
+        出来ること、やりたいことがどんどん増えてくる。<br><br>
+        その芽生えた<strong>小さなやる気</strong>を、一緒に育てていきませんか？
+      </p>
+    </div>
+    <div class="what-box">
+      <span class="paint-icon">🏠</span>
+      <p>
+        お家の中のその『<strong>表現遊び</strong>』を通して、<br>
+        子どもの考える力を育てる<strong>接し方や声かけ</strong>をお伝えしていきます。<br><br>
+        今まで何気なく見ていた子どもの遊びや行動。<br>
+        その意味を知ることで、<strong>子どもへの接し方が少しずつ変わっていきます</strong>。<br><br>
+        色彩心理をもとに、お子さんの描いた絵や作品をみていきます。<br>
+        その時のお子さんの気持ちが、そこに表現されているかもしれません。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- STEPS -->
+<section class="steps">
+  <div class="container">
+    <p class="section-label">HOW IT WORKS</p>
+    <h2 class="section-title">たった3ステップで<br>カウンセリングを受けられます</h2>
+    <div class="steps-list">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>お子さんに自由に絵を描かせる</h3>
+          <p>テーマや指示は不要です。クレヨンでも絵の具でも、お子さんが好きな画材で自由に。「うまく描いて」は言わないでください。</p>
+        </div>
+      </div>
+      <div class="step-connector"></div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>絵の写真をフォームから送る</h3>
+          <p>申込フォームに、絵の写真・お子さんの年齢・気になっていることを入力して送信するだけ。難しい操作は一切ありません。</p>
+        </div>
+      </div>
+      <div class="step-connector"></div>
+      <div class="step step-3-highlight">
+        <div class="step-num" style="background:#F5A623;">3</div>
+        <div class="step-body">
+          <h3>オンラインで1対1カウンセリング</h3>
+          <p>ZoomまたはGoogle Meetで、約45分のカウンセリングを行います。絵の読み解きと、お母さんへの個別アドバイスをお伝えします。</p>
+          <div class="step3-detail">
+            <span class="step3-tag">🖍️ 色彩心理で読み解き</span>
+            <span class="step3-tag">💬 個別アドバイス</span>
+            <span class="step3-tag">⏱️ 約45分</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POINT -->
+<section class="point">
+  <div class="container">
+    <p class="section-label">IMPORTANT POINT</p>
+    <h2 class="section-title">絵を描かせるときの<br>ひとつだけお願い</h2>
+    <div class="point-note">
+      <p>
+        お子さんに<strong>指示はしないでください</strong>。<br>
+        「太陽は黄色で描いて」「もっと大きく描いて」はNG。<br><br>
+        たとえば太陽を黒く描いてしまっても、<br>
+        そのままにしておいてください。<br><br>
+        「自分の思ったとおりに表現できた」という体験こそが、<br>
+        子どもの心を映し出す大切な鍵になります。🔑
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- PROFILE -->
+<section class="profile">
+  <div class="container">
+    <p class="section-label">INSTRUCTOR</p>
+    <h2 class="section-title">インストラクター紹介</h2>
+    <div class="profile-card">
+      <div class="profile-icon">🎨</div>
+      <div>
+        <p class="profile-name">カラフル 主宰</p>
+        <p class="profile-title">子どものアトリエ カラフル 代表</p>
+      </div>
+      <div class="profile-tags">
+        <span class="profile-tag">色彩心理協会 会員</span>
+        <span class="profile-tag">A.F.T認定 色彩コーディネーター</span>
+        <span class="profile-tag">指導歴20年</span>
+      </div>
+      <p class="profile-text">
+        リアルのアトリエを20年間運営し、のべ100組以上の親子と向き合ってきました。長く通い続けてくれたご家族の中には、上のお子さんから下のお子さんへと、10年近く通い続けてくださった方も。色彩心理を通じて、親子の関係がポジティブに変わっていく瞬間を、これからもオンラインでお届けしていきます。
+      </p>
+      <p class="profile-private-note">
+        🔒 インストラクターの氏名は個人情報保護の観点から、<br>無料体験にお申し込みいただいた方にご案内しております。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- MONITOR -->
+<section class="monitor" id="form">
+  <div class="container">
+    <div class="monitor-badge">🌟 期間限定 無料モニター募集中</div>
+    <h2 class="section-title">今だけ、無料でお受けしています</h2>
+    <div class="monitor-price">¥0 <span>（通常有料予定）</span></div>
+    <p class="monitor-note">
+      サービス立ち上げにあたり、<br>
+      モニターとしてご参加いただける方を募集しています。<br>
+      カウンセリング後にご感想をお聞かせいただけると嬉しいです。
+    </p>
+    <a href="https://forms.google.com" class="cta-btn" target="_blank">📝 申込フォームへ（無料）</a>
+    <p class="hero-note" style="margin-top:14px;">※ 定員に達し次第、募集を終了します</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="container">
+    <p class="section-label">FAQ</p>
+    <h2 class="section-title">よくある質問</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">絵が上手に描けなくても大丈夫ですか？</div>
+        <div class="faq-a">もちろん大丈夫です！うまく描くことが目的ではありません。色の使い方や筆の勢いなど、上手・下手とは関係ないところに心の状態があらわれます。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">何歳のお子さんが対象ですか？</div>
+        <div class="faq-a">1歳〜6歳頃のお子さんを主な対象としています。年齢によって色彩心理の読み解き方が変わりますので、申込時にお子さんの年齢をお知らせください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">オンラインに不慣れでも使えますか？</div>
+        <div class="faq-a">はい、ご安心ください。ZoomまたはGoogle Meetを使いますが、事前に接続のご案内をお送りします。不安な方はお気軽にご相談ください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">カウンセリングはどのくらいの時間ですか？</div>
+        <div class="faq-a">1回あたり約45分を予定しています。絵の読み解き（約15分）＋お母さんへの個別アドバイス（約30分）の構成です。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="container">
+    <h2>お子さんの絵が、<br>きっと何かを教えてくれます。</h2>
+    <p>まずは一枚、自由に描かせてみてください。<br>その絵を、一緒に読み解きましょう。</p>
+    <a href="#form" class="cta-btn-white">🌈 無料モニターに申し込む</a>
+  </div>
+</section>
+
+<footer>
+  <p>子どものアトリエ カラフル</p>
+  <p style="margin-top:8px;">色彩心理協会会員 ／ A.F.T認定 色彩コーディネーター</p>
+  <p style="margin-top:8px;"><a href="/cdn-cgi/l/email-protection#b7d4d1dcd4d1da8785f7d0dad6dedb99d4d8da"><span class="__cf_email__" data-cfemail="dbb8bdb0b8bdb6ebe99bbcb6bab2b7f5b8b4b6">[email&#160;protected]</span></a></p>
+  <p style="margin-top:16px; font-size:11px; opacity:0.6;">© 子どものアトリエ カラフル All rights reserved.</p>
+</footer>
+
+<div class="sticky-cta">
+  <a href="#form">🌈 無料モニターに申し込む（無料）</a>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // アニメーションなし（常時表示）
+
+  const stickyCta = document.querySelector('.sticky-cta');
+  const c
